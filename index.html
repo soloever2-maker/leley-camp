@@ -25,13 +25,13 @@
   <meta property="og:image:height" content="630"/>
   <meta name="twitter:card"        content="summary_large_image"/>
 
-  <!-- Google Analytics — replace G-XXXXXXXXXX with your real ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google Analytics — replace G-2GFJWSF7KM with your real ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GFJWSF7KM"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'G-2GFJWSF7KM');
   </script>
 
   <!-- JSON-LD Structured Data -->
@@ -420,7 +420,6 @@
     <ul class="nav-links">
       <li><a href="#about"      data-en="About"      data-ar="عن الكامب">About</a></li>
       <li><a href="#cabins"     data-en="Cabins"     data-ar="الكبائن">Cabins</a></li>
-      <li><a href="#prices"     data-en="Prices"     data-ar="الأسعار">Prices</a></li>
       <li><a href="#gallery"    data-en="Gallery"    data-ar="الصور">Gallery</a></li>
       <li><a href="#book"       data-en="Book"       data-ar="احجز">Book</a></li>
     </ul>
@@ -454,6 +453,25 @@
   <div class="hero-scroll">
     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     <span data-en="scroll" data-ar="اسكرول">scroll</span>
+  </div>
+</section>
+
+
+<!-- ── VR TOUR FEATURED ── -->
+<section id="vr-tour" style="background: var(--night); padding: 0;">
+  <div style="position:relative; width:100%; height: 70vh; min-height: 480px; overflow:hidden;">
+    <iframe
+      src="https://viavr.blob.core.windows.net/leleycamp/index.htm"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+      allowfullscreen>
+    </iframe>
+    <div style="position:absolute; top:20px; left:50%; transform:translateX(-50%); z-index:10;
+                background:rgba(0,0,0,0.6); backdrop-filter:blur(8px);
+                color:#fff; padding:8px 20px; border-radius:50px;
+                font-size:0.82rem; font-weight:600; white-space:nowrap;
+                pointer-events:none;">
+      🥽 Virtual 360° Tour — Drag to explore
+    </div>
   </div>
 </section>
 
@@ -575,161 +593,6 @@
   </div>
 </section>
 
-<!-- ── PRICES ── -->
-<section id="prices">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:0">
-      <span class="section-tag" data-en="Transparent Pricing" data-ar="أسعار واضحة">Transparent Pricing</span>
-      <h2 class="section-title" data-en="Choose Your Stay" data-ar="اختر إقامتك">Choose Your Stay</h2>
-      <p class="section-sub" style="margin: 0 auto" data-en="All prices include breakfast and beach access." data-ar="جميع الأسعار تشمل الإفطار والوصول للشاطئ.">All prices include breakfast and beach access.</p>
-    </div>
-    <div class="prices-grid">
-
-      <div class="price-card">
-        <div class="price-name" data-en="Standard Cabin" data-ar="كابينة عادية">Standard Cabin</div>
-        <div class="price-amount">
-          <span class="price-num">800</span>
-          <span class="price-unit" data-en="EGP / night" data-ar="ج.م / ليلة">EGP / night</span>
-        </div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li data-en="1 or 2 persons" data-ar="شخص أو شخصين">1 or 2 persons</li>
-          <li data-en="Sea view" data-ar="إطلالة بحر">Sea view</li>
-          <li data-en="Breakfast included" data-ar="إفطار مشمول">Breakfast included</li>
-          <li data-en="Beach access" data-ar="وصول للشاطئ">Beach access</li>
-        </ul>
-        <a class="price-btn"
-           href="https://wa.me/201274057142?text=%D9%85%D8%B3%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%20%D9%85%D9%85%D9%83%D9%86%20%D8%A7%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84"
-           target="_blank" data-en="Book via WhatsApp" data-ar="احجز عبر واتساب">Book via WhatsApp</a>
-      </div>
-
-      <div class="price-card featured" data-badge="Most Popular">
-        <div class="price-name" data-en="Sea-View Cabin" data-ar="كابينة منظر البحر">Sea-View Cabin</div>
-        <div class="price-amount">
-          <span class="price-num">1,200</span>
-          <span class="price-unit" data-en="EGP / night" data-ar="ج.م / ليلة">EGP / night</span>
-        </div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li data-en="Up to 3 persons" data-ar="حتى 3 أشخاص">Up to 3 persons</li>
-          <li data-en="Direct sea view + balcony" data-ar="منظر بحر مباشر + بلكونة">Direct sea view + balcony</li>
-          <li data-en="Breakfast included" data-ar="إفطار مشمول">Breakfast included</li>
-          <li data-en="Snorkeling gear" data-ar="معدات غطس">Snorkeling gear</li>
-          <li data-en="Beach access" data-ar="وصول للشاطئ">Beach access</li>
-        </ul>
-        <a class="price-btn"
-           href="https://wa.me/201274057142?text=%D9%85%D8%B3%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%20%D9%85%D9%85%D9%83%D9%86%20%D8%A7%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84"
-           target="_blank" data-en="Book via WhatsApp" data-ar="احجز عبر واتساب">Book via WhatsApp</a>
-      </div>
-
-      <div class="price-card">
-        <div class="price-name" data-en="Group / Family" data-ar="عيلة / مجموعة">Group / Family</div>
-        <div class="price-amount">
-          <span class="price-num" style="font-size:1.6rem" data-en="Ask Us" data-ar="اسألنا">Ask Us</span>
-        </div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li data-en="4+ persons" data-ar="4 أشخاص أو أكثر">4+ persons</li>
-          <li data-en="Multiple cabins" data-ar="أكثر من كابينة">Multiple cabins</li>
-          <li data-en="All meals option" data-ar="خيار كل الوجبات">All meals option</li>
-          <li data-en="Private yoga session" data-ar="جلسة يوجا خاصة">Private yoga session</li>
-          <li data-en="Special group rate" data-ar="سعر خاص للمجموعات">Special group rate</li>
-        </ul>
-        <a class="price-btn"
-           href="https://wa.me/201274057142?text=%D9%85%D8%B3%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%20%D9%85%D9%85%D9%83%D9%86%20%D8%A7%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84"
-           target="_blank" data-en="Get a Quote" data-ar="اطلب عرض سعر">Get a Quote</a>
-      </div>
-
-    </div>
-    <p style="text-align:center; color:var(--muted); font-size:0.8rem; margin-top:20px;"
-       data-en="* Prices may vary by season. Contact us for exact availability and rates."
-       data-ar="* الأسعار قد تتغير حسب الموسم. تواصل معنا للاستفسار عن الأسعار والإتاحة.">
-      * Prices may vary by season. Contact us for exact availability and rates.
-    </p>
-  </div>
-</section>
-
-<!-- ── REVIEWS ── -->
-<section id="reviews">
-  <div class="container">
-    <span class="section-tag" data-en="Guest Reviews" data-ar="تقييمات الضيوف">Guest Reviews</span>
-    <h2 class="section-title" data-en="What Our Guests Say" data-ar="ماذا قال ضيوفنا">What Our Guests Say</h2>
-    <div class="reviews-grid">
-
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text" data-en='"One of the most magical places I have ever stayed. Waking up to the sound of the sea from a wooden cabin is something I will never forget."'
-           data-ar='"من أجمل الأماكن اللي بيت فيها في حياتي. الصحيان على صوت البحر من الكابينة الخشبية حاجة مش هانساها."'>
-          "One of the most magical places I have ever stayed. Waking up to the sound of the sea from a wooden cabin is something I will never forget."
-        </p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">S</div>
-          <div>
-            <div class="reviewer-name">Sarah M.</div>
-            <div class="reviewer-source">Google Reviews</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text" data-en='"The coral reef is literally 10 steps from the cabin door. I snorkeled every morning. The food is incredible and the team treated us like family."'
-           data-ar='"الشعاب المرجانية على بعد 10 خطوات من باب الكابينة. غطست كل صبح. الأكل رائع والفريق عاملنا زي العيلة."'>
-          "The coral reef is literally 10 steps from the cabin door. I snorkeled every morning. The food is incredible and the team treated us like family."
-        </p>
-        <div class="reviewer">
-          <div class="reviewer-avatar" style="background:var(--sand);color:var(--night)">A</div>
-          <div>
-            <div class="reviewer-name">Ahmed K.</div>
-            <div class="reviewer-source">Booking.com</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text" data-en='"Perfect digital detox. No loud music, no crowds — just the sea, the mountains, and the stars. The sunrise yoga session was the highlight of my trip."'
-           data-ar='"ديتوكس رقمي مثالي. مفيش ضوضاء ولا زحمة — بس البحر والجبال والنجوم. جلسة يوجا الشروق كانت أجمل لحظة في الرحلة."'>
-          "Perfect digital detox. No loud music, no crowds — just the sea, the mountains, and the stars. The sunrise yoga session was the highlight of my trip."
-        </p>
-        <div class="reviewer">
-          <div class="reviewer-avatar" style="background:#E76F51">L</div>
-          <div>
-            <div class="reviewer-name">Layla R.</div>
-            <div class="reviewer-source">TripAdvisor</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text" data-en='"Brought the whole family — 3 cabins, 8 people. Everyone was happy. The kids loved the snorkeling, the adults loved the peace and the grilled fish. Will definitely return."'
-           data-ar='"جيت مع العيلة كلها — 3 كبائن، 8 أشخاص. الكل انبسط. الأطفال حبوا الغطس والكبار حبوا الهدوء والسمك المشوي. هنرجع بإذن الله."'>
-          "Brought the whole family — 3 cabins, 8 people. Everyone was happy. The kids loved the snorkeling, the adults loved the peace and the grilled fish. Will definitely return."
-        </p>
-        <div class="reviewer">
-          <div class="reviewer-avatar" style="background:#457B9D">M</div>
-          <div>
-            <div class="reviewer-name">Mohamed H.</div>
-            <div class="reviewer-source">Facebook</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="rating-summary">
-      <div class="rating-big">4.9</div>
-      <div class="rating-info">
-        <div class="stars" style="font-size:1.2rem">★★★★★</div>
-        <p data-en="Based on 84 verified guest reviews" data-ar="بناءً على 84 تقييم من ضيوف حقيقيين">Based on 84 verified guest reviews</p>
-      </div>
-      <a href="https://www.booking.com/Share-TQifne8" target="_blank"
-         style="margin-left:auto; background:var(--sand); color:var(--night); padding:12px 22px; border-radius:50px; font-weight:600; font-size:0.85rem; white-space:nowrap;"
-         data-en="Read all reviews →" data-ar="كل التقييمات →">Read all reviews →</a>
-    </div>
-  </div>
-</section>
 
 <!-- ── GALLERY ── -->
 <section id="gallery">
@@ -818,7 +681,6 @@
         <li><a href="#about"     data-en="About Us"    data-ar="عن الكامب">About Us</a></li>
         <li><a href="#cabins"    data-en="Cabins"      data-ar="الكبائن">Cabins</a></li>
         <li><a href="#prices"    data-en="Prices"      data-ar="الأسعار">Prices</a></li>
-        <li><a href="#reviews"   data-en="Reviews"     data-ar="التقييمات">Reviews</a></li>
         <li><a href="#gallery"   data-en="Gallery"     data-ar="الصور">Gallery</a></li>
       </ul>
     </div>
@@ -864,9 +726,9 @@
 <!-- ── VISITOR COUNTER ── -->
 <script>
   const OFFSET = 1359;
-  fetch('https://api.countapi.xyz/hit/leleycamp-nuweiba/v2')
+  fetch('https://api.counterapi.dev/v1/leleycamp-nuweiba/visits/up')
     .then(r => r.json())
-    .then(d => { document.getElementById('visit-count').textContent = ((d.value||1)+OFFSET).toLocaleString('en-US'); })
+    .then(d => { document.getElementById('visit-count').textContent = ((d.count||1)+OFFSET).toLocaleString('en-US'); })
     .catch(() => { document.getElementById('visit-count').textContent = '1,360+'; });
 </script>
 
