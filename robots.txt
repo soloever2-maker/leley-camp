@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://soloever2-maker.github.io/leley-camp/sitemap.xml
