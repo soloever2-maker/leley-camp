@@ -1,7 +1,6 @@
-const CACHE = 'leley-v1';
+const CACHE = 'leley-v2';
 
 const ASSETS = [
-  '/',
   '/index.html',
   '/manifest.json',
   '/images/hero.jpg',
@@ -18,17 +17,18 @@ const ASSETS = [
   '/images/food-3.jpg',
   '/images/icon-192.png',
   '/images/icon-512.png',
+  '/images/og-image.jpg',
 ];
 
-// Install: cache everything
+// ── Install ───────────────────────────────────────────
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(ASSETS))
+    caches.open(CACHE).then(cache => cache.addAll(ASSETS))
   );
   self.skipWaiting();
 });
 
-// Activate: remove old caches
+// ── Activate: clear old caches ────────────────────────
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
@@ -38,35 +38,50 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// Fetch: cache-first for images, network-first for HTML
+// ── Fetch ─────────────────────────────────────────────
 self.addEventListener('fetch', e => {
   const { request } = e;
   const url = new URL(request.url);
 
-  // Skip non-GET and external requests (like countapi)
+  // Skip non-GET and cross-origin (countapi, fonts, etc.)
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
 
-  if (request.destination === 'image') {
-    // Cache-first for images
+  // THE FIX: any navigation (page load / PWA launch from home screen)
+  // always resolves to /index.html — avoids the 404 on "/"
+  if (request.mode === 'navigate') {
     e.respondWith(
-      caches.match(request).then(cached =>
-        cached || fetch(request).then(res => {
-          const clone = res.clone();
-          caches.open(CACHE).then(c => c.put(request, clone));
+      caches.match('/index.html').then(cached =>
+        cached ||
+        fetch('/index.html').then(res => {
+          caches.open(CACHE).then(c => c.put('/index.html', res.clone()));
           return res;
         })
       )
     );
-  } else {
-    // Network-first for HTML (so updates deploy instantly)
+    return;
+  }
+
+  // Images → cache-first
+  if (request.destination === 'image') {
     e.respondWith(
-      fetch(request)
-        .then(res => {
-          const clone = res.clone();
-          caches.open(CACHE).then(c => c.put(request, clone));
+      caches.match(request).then(cached =>
+        cached ||
+        fetch(request).then(res => {
+          caches.open(CACHE).then(c => c.put(request, res.clone()));
           return res;
         })
-        .catch(() => caches.match(request))
+      )
     );
+    return;
   }
+
+  // Everything else → network-first, fallback to cache
+  e.respondWith(
+    fetch(request)
+      .then(res => {
+        caches.open(CACHE).then(c => c.put(request, res.clone()));
+        return res;
+      })
+      .catch(() => caches.match(request))
+  );
 });
