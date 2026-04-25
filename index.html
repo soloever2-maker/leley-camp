@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leley Camp — Nuweiba, South Sinai</title>
+  <meta name="description" content="Leley Camp — Come as a guest, leave as a friend. Wooden cabins on the Red Sea in Nuweiba, South Sinai, Egypt." />
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Variables ─────────────────────────────────── */
+    :root {
+      --sand:    #D4A96A;
+      --sea:     #2A7F9E;
+      --night:   #1A2B38;
+      --cream:   #FAF7F2;
+      --white:   #FFFFFF;
+      --text:    #2C2C2C;
+      --muted:   #6B7280;
+      --radius:  14px;
+      --header:  68px;
+      --shadow:  0 8px 32px rgba(0,0,0,0.10);
+    }
+
+    /* ─── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    img  { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ─── Header ─────────────────────────────────────── */
+    header {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 999;
+      height: var(--header);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      display: flex; align-items: center;
+    }
+    .nav {
+      width: 100%; max-width: 1200px; margin: 0 auto;
+      padding: 0 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-brand img {
+      width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--sand);
+    }
+    .nav-brand span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700; color: var(--night);
+    }
+    .nav-links {
+      display: flex; gap: 28px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500; color: var(--night);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--sea); }
+    .nav-cta {
+      background: var(--sea); color: #fff;
+      padding: 9px 20px; border-radius: 50px;
+      font-size: 0.85rem; font-weight: 600;
+      transition: background .2s, transform .15s;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .nav-cta:hover { background: var(--night); transform: translateY(-1px); }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      margin-top: var(--header);
+      position: relative;
+      height: calc(100svh - var(--header));
+      min-height: 480px;
+      overflow: hidden;
+    }
+    .hero img {
+      position: absolute; inset: 0;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(20,35,50,0.25) 0%,
+        rgba(20,35,50,0.65) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 24px 20px;
+      color: #fff;
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      max-width: 520px; opacity: .9; margin-bottom: 32px;
+    }
+    .hero-btns {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn {
+      padding: 13px 26px; border-radius: 50px;
+      font-size: 0.9rem; font-weight: 600;
+      transition: transform .15s, box-shadow .15s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .btn-primary { background: var(--sand); color: var(--night); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.7); color: #fff; }
+
+    .hero-scroll {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.7); font-size: 0.7rem; letter-spacing: 1px;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+    .hero-scroll svg { opacity: .7; }
+
+    /* ─── Section Base ───────────────────────────────── */
+    section { padding: 80px 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      color: var(--sea); font-size: 0.75rem;
+      font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; color: var(--night);
+      line-height: 1.2; margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1rem;
+      max-width: 520px; line-height: 1.7;
+    }
+
+    /* ─── About ──────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 36px; } }
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 420px;
+      box-shadow: var(--shadow);
+    }
+    .about-img-wrap img { height: 100%; }
+    .about-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 0.8rem; font-weight: 600; color: var(--night);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+    .about-badge span { display: block; font-size: 1.3rem; font-weight: 700; color: var(--sea); }
+    .about-text { display: flex; flex-direction: column; gap: 20px; }
+    .about-text p { color: var(--muted); line-height: 1.8; }
+    .about-stats {
+      display: flex; gap: 30px; margin-top: 8px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--sand);
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .contact-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .chip {
+      display: flex; align-items: center; gap: 7px;
+      background: #fff; border: 1px solid #e5e7eb;
+      border-radius: 50px; padding: 8px 16px;
+      font-size: 0.82rem; font-weight: 500; color: var(--night);
+      box-shadow: var(--shadow); transition: transform .15s;
+    }
+    .chip:hover { transform: translateY(-2px); }
+    .chip svg { flex-shrink: 0; }
+
+    /* ─── Cabins ─────────────────────────────────────── */
+    #cabins { background: var(--night); }
+    #cabins .section-title { color: #fff; }
+    #cabins .section-sub  { color: rgba(255,255,255,0.55); }
+    .cabins-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .cabin-card {
+      border-radius: var(--radius); overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .cabin-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.4); }
+    .cabin-img { height: 260px; position: relative; overflow: hidden; }
+    .cabin-img img { transition: transform .4s; }
+    .cabin-card:hover .cabin-img img { transform: scale(1.05); }
+    .cabin-body { padding: 20px 22px 24px; }
+    .cabin-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: #fff; margin-bottom: 8px;
+    }
+    .cabin-body p { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .cabin-tag {
+      display: inline-block; margin-top: 14px;
+      background: rgba(212,169,106,0.2); color: var(--sand);
+      border: 1px solid rgba(212,169,106,0.4);
+      border-radius: 50px; padding: 4px 12px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+
+    /* ─── Activities ─────────────────────────────────── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .activity-card {
+      border-radius: var(--radius); overflow: hidden;
+      background: #fff; box-shadow: var(--shadow);
+      transition: transform .25s;
+    }
+    .activity-card:hover { transform: translateY(-5px); }
+    .activity-img { height: 230px; overflow: hidden; }
+    .activity-img img { transition: transform .4s; }
+    .activity-card:hover .activity-img img { transform: scale(1.05); }
+    .activity-body { padding: 18px 20px 22px; }
+    .activity-icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .activity-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--night); margin-bottom: 7px;
+    }
+    .activity-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── Gallery ────────────────────────────────────── */
+    #gallery { background: #fff; }
+    .gallery-header { margin-bottom: 36px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: 1fr; } }
+    .g-item {
+      border-radius: 10px; overflow: hidden;
+      cursor: pointer; position: relative;
+    }
+    .g-item img { height: 200px; transition: transform .4s; }
+    .g-item:hover img { transform: scale(1.06); }
+    .g-item.tall img { height: 412px; }
+    .g-item.wide {
+      grid-column: span 2;
+    }
+    .g-item.wide img { height: 200px; }
+
+    /* ─── Footer / Contact ───────────────────────────── */
+    footer {
+      background: var(--night); color: rgba(255,255,255,0.75);
+      padding: 60px 20px 40px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+    @media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 32px; } }
+    .footer-brand img {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 2px solid var(--sand); margin-bottom: 14px;
+    }
+    .footer-brand h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; color: #fff; margin-bottom: 10px;
+    }
+    .footer-brand p { font-size: 0.875rem; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 {
+      color: #fff; font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.5px; margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 0.85rem; transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--sand); }
+    .footer-bottom {
+      max-width: 1200px; margin: 40px auto 0;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.8rem; }
+    .visitor-counter {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50px; padding: 6px 14px;
+      font-size: 0.78rem;
+    }
+    .visitor-counter .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; } 50% { opacity: .4; }
+    }
+    #visit-count { font-weight: 600; color: #fff; }
+
+    /* ─── WhatsApp Float ─────────────────────────────── */
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 998;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+    .wa-tooltip {
+      position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+      background: #fff; color: var(--night);
+      padding: 7px 14px; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+      box-shadow: var(--shadow); pointer-events: none;
+      opacity: 0; transition: opacity .2s;
+    }
+    .wa-tooltip::after {
+      content: '';
+      position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+      border: 6px solid transparent; border-right: none;
+      border-left-color: #fff;
+    }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ───────────────────────────────────────── -->
+<header>
+  <nav class="nav">
+    <a class="nav-brand" href="#home">
+      <img src="images/logo.jpg" alt="Leley Camp Logo" />
+      <span>Leley Camp</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#cabins">Cabins</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+    </ul>
+    <a class="nav-cta"
+       href="https://wa.me/201274057142?text=%D9%85%D8%B3%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%20%D9%85%D9%85%D9%83%D9%86%20%D8%A7%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84"
+       target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+      </svg>
+      Book Now
+    </a>
+  </nav>
+</header>
+
+<!-- ── HERO ────────────────────────────────────────── -->
+<section id="home" class="hero">
+  <img src="images/hero.jpg" alt="Leley Camp — Red Sea, Nuweiba" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌊 Nuweiba · South Sinai · Egypt</div>
+    <h1>Leley Camp</h1>
+    <p>Come as a guest, leave as a friend.<br/>
+       Where the Red Sea meets the Sinai mountains.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary"
+         href="https://wa.me/201274057142?text=%D9%85%D8%B3%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%20%D9%85%D9%85%D9%83%D9%86%20%D8%A7%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84"
+         target="_blank">Reserve a Cabin</a>
+      <a class="btn btn-outline" href="https://maps.app.goo.gl/2ASN1Qh8FJ3rEEQN8" target="_blank">📍 Get Directions</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+    scroll
+  </div>
+</section>
+
+<!-- ── ABOUT ───────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="images/camp-exterior.jpg" alt="Leley Camp exterior" />
+        <div class="about-badge">
+          <span>⭐ 4.9</span>
+          Rated by our guests
+        </div>
+      </div>
+      <div class="about-text">
+        <div>
+          <span class="section-tag">Our Story</span>
+          <h2 class="section-title">A Hidden Gem on the Red Sea</h2>
+        </div>
+        <p>
+          Nestled between the dramatic Sinai mountains and the crystal-clear Red Sea in Nuweiba,
+          Leley Camp is a place where time slows down. Our wooden cabins sit right on the water's
+          edge, each with its own direct sea view.
+        </p>
+        <p>
+          Whether you come for the world-class coral reefs, the sunrise yoga sessions, or simply
+          to disconnect and breathe — you'll leave as family.
+        </p>
+
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">12+</div>
+            <div class="stat-label">Cabins</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5★</div>
+            <div class="stat-label">Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">365</div>
+            <div class="stat-label">Days/Year</div>
+          </div>
+        </div>
+
+        <div class="contact-chips">
+          <a class="chip"
+             href="https://wa.me/201274057142?text=%D9%85%D8%B3%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%20%D9%85%D9%85%D9%83%D9%86%20%D8%A7%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84"
+             target="_blank">
+            <svg width="15" height="15" fill="#25D366" viewBox="0 0 16 16">
+              <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+            </svg>
+            WhatsApp
+          </a>
+          <a class="chip" href="tel:+201274057142">
+            <svg width="14" height="14" fill="none" stroke="#2A7F9E" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 6.19 19.79 19.79 0 01.08 4.5 2 2 0 012 2.32h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            +20 127 405 7142
+          </a>
+          <a class="chip" href="https://maps.app.goo.gl/2ASN1Qh8FJ3rEEQN8" target="_blank">
+            <svg width="14" height="14" fill="none" stroke="#E76F51" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            View on Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CABINS ──────────────────────────────────────── -->
+<section id="cabins">
+  <div class="container">
+    <span class="section-tag" style="color:var(--sand)">Where You Sleep</span>
+    <h2 class="section-title">Our Cabins</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.55)">
+      Handcrafted wooden cabins, each opening directly onto the sea.
+    </p>
+    <div class="cabins-grid">
+
+      <div class="cabin-card">
+        <div class="cabin-img"><img src="images/cabin-1.jpg" alt="Family Cabin" /></div>
+        <div class="cabin-body">
+          <h3>Sea-View Cabin</h3>
+          <p>Twin beds, private balcony, and an unobstructed panorama of the Red Sea and Sinai mountains.</p>
+          <span class="cabin-tag">🛏 Twin • Balcony</span>
+        </div>
+      </div>
+
+      <div class="cabin-card">
+        <div class="cabin-img"><img src="images/cabin-2.jpg" alt="Beachfront Cabin" /></div>
+        <div class="cabin-body">
+          <h3>Beachfront Cabin</h3>
+          <p>Step out the door and your feet are in the sand. Direct beach access, perfect for snorkelers.</p>
+          <span class="cabin-tag">🌊 Beach Access</span>
+        </div>
+      </div>
+
+      <div class="cabin-card">
+        <div class="cabin-img"><img src="images/cabin-3.jpg" alt="Sunset Cabin" /></div>
+        <div class="cabin-body">
+          <h3>Sunset Cabin</h3>
+          <p>West-facing window — wake up to sunrise, watch the entire sea turn gold at dusk from your bed.</p>
+          <span class="cabin-tag">🌅 Sunset View</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ACTIVITIES ──────────────────────────────────── -->
+<section id="activities">
+  <div class="container">
+    <span class="section-tag">Things To Do</span>
+    <h2 class="section-title">Activities & Experiences</h2>
+    <p class="section-sub">Every day at Leley Camp is a new adventure.</p>
+    <div class="activities-grid">
+
+      <div class="activity-card">
+        <div class="activity-img"><img src="images/reef.jpg" alt="Snorkeling" /></div>
+        <div class="activity-body">
+          <div class="activity-icon">🤿</div>
+          <h3>Snorkeling & Reefs</h3>
+          <p>One of the richest coral reefs in the Red Sea is literally at your doorstep. Spot colourful fish in crystal-clear water.</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-img"><img src="images/yoga.jpg" alt="Yoga" /></div>
+        <div class="activity-body">
+          <div class="activity-icon">🧘</div>
+          <h3>Yoga by the Sea</h3>
+          <p>Morning sessions in our open-air hall overlooking the water. All levels welcome — sunrise yoga is unforgettable.</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-img"><img src="images/beach.jpg" alt="Bedouin Experience" /></div>
+        <div class="activity-body">
+          <div class="activity-icon">☕</div>
+          <h3>Bedouin Beach Lounge</h3>
+          <p>Cushions on the sand, Bedouin carpets, mint tea, and a sea view. The best way to do absolutely nothing.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ─────────────────────────────────────── -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <span class="section-tag">Gallery</span>
+      <h2 class="section-title">Life at Leley Camp</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item wide"><img src="images/hero.jpg"     alt="Panorama" /></div>
+      <div class="g-item">     <img src="images/cabin-3.jpg" alt="Sunset" /></div>
+      <div class="g-item">     <img src="images/reef.jpg"    alt="Reef" /></div>
+      <div class="g-item">     <img src="images/food-2.jpg"  alt="Grill" /></div>
+      <div class="g-item">     <img src="images/food-1.jpg"  alt="Breakfast" /></div>
+      <div class="g-item">     <img src="images/yoga.jpg"    alt="Yoga" /></div>
+      <div class="g-item">     <img src="images/food-3.jpg"  alt="Fish" /></div>
+      <div class="g-item">     <img src="images/cabin-1.jpg" alt="Cabin" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.jpg" alt="Logo" />
+      <h3>Leley Camp</h3>
+      <p>Come as a guest, leave as a friend. Nuweiba, South Sinai, Egypt — on the shores of the Red Sea.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#cabins">Cabins</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>
+          <a href="https://wa.me/201274057142?text=%D9%85%D8%B3%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%20%D9%85%D9%85%D9%83%D9%86%20%D8%A7%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84" target="_blank">WhatsApp</a>
+        </li>
+        <li><a href="tel:+201274057142">+20 127 405 7142</a></li>
+        <li><a href="https://maps.app.goo.gl/2ASN1Qh8FJ3rEEQN8" target="_blank">📍 Google Maps</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Leley Camp. All rights reserved.</p>
+    <div class="visitor-counter">
+      <span class="dot"></span>
+      <span id="visit-count">—</span>
+      <span>visitors</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ──────────────────────────────── -->
+<a class="wa-float"
+   href="https://wa.me/201274057142?text=%D9%85%D8%B3%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%20%D9%85%D9%85%D9%83%D9%86%20%D8%A7%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%20%D9%88%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84"
+   target="_blank" aria-label="Chat on WhatsApp">
+  <div class="wa-tooltip">Chat with us</div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+  </svg>
+</a>
+
+<!-- ── VISITOR COUNTER SCRIPT ──────────────────────── -->
+<script>
+  // Offset so the counter starts visually at 1360 on the first real hit
+  const OFFSET = 1359;
+
+  fetch('https://api.countapi.xyz/hit/leleycamp-nuweiba/v2')
+    .then(r => r.json())
+    .then(d => {
+      const total = (d.value || 1) + OFFSET;
+      document.getElementById('visit-count').textContent =
+        total.toLocaleString('en-US');
+    })
+    .catch(() => {
+      // If API is offline, show a static fallback
+      document.getElementById('visit-count').textContent = '1,360+';
+    });
+</script>
+
+</body>
+</html>
