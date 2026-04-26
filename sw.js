@@ -1,4 +1,4 @@
-const CACHE = 'leley-v3';
+const CACHE = 'leley-v4';
 const BASE  = self.registration.scope; // works on both / and /leley-camp/
 
 const ASSETS = [
